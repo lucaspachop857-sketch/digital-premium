@@ -3,171 +3,421 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Premium</title>
+<title>Panel Premium Streaming</title>
+<meta name="description" content="Cuentas streaming y combos premium con entrega inmediata. Netflix, Disney+, HBO Max, Prime Video y más.">
 
 <style>
 body {
-  margin:0;
-  font-family:system-ui, Arial;
-  background:#0b0f19;
-  color:#fff;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #000;
+  color: white;
+  overflow-x: hidden;
 }
 
-/* HEADER */
-header {
-  background:#000;
-  padding:14px;
-  text-align:center;
-  color:#e50914;
-  font-weight:600;
-  font-size:18px;
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1517602302552-471fe67acf66?q=80&w=1600&auto=format&fit=crop') center/cover;
+  filter: blur(8px) brightness(0.3);
+  z-index: -2;
 }
 
-/* CONTENEDOR */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.95));
+  z-index: -1;
+}
+
 .container {
-  max-width:900px;
-  margin:auto;
-  padding:15px;
+  max-width: 1140px;
+  margin: auto;
+  padding: 36px 20px 80px;
 }
 
-/* TITULOS */
-h3 {
-  margin:15px 0 10px;
-  font-size:16px;
-  color:#ccc;
+.hero {
+  text-align: center;
+  padding-top: 20px;
 }
 
-/* GRID */
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:12px;
+.badge {
+  display: inline-block;
+  background: rgba(244,197,66,0.12);
+  border: 1px solid rgba(244,197,66,0.35);
+  color: #f4c542;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: .08em;
 }
 
-/* CARD */
+h1 {
+  font-size: 52px;
+  margin: 18px 0 10px;
+}
+
+.gold { color: #f4c542; }
+
+.hero p {
+  max-width: 760px;
+  margin: 0 auto;
+  color: #d7d7d7;
+  line-height: 1.7;
+  font-size: 18px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: .25s;
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn-primary {
+  background: #f4c542;
+  color: #111;
+}
+
+.btn-secondary {
+  border: 1px solid rgba(255,255,255,0.15);
+  color: white;
+  background: rgba(255,255,255,0.04);
+}
+
+.logos {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.logo {
+  font-size: 14px;
+  background: rgba(255,255,255,0.06);
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.stat {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.stat strong {
+  display: block;
+  font-size: 28px;
+  color: #f4c542;
+  margin-bottom: 6px;
+}
+
+.section {
+  margin-top: 68px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+.section-sub {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 28px;
+  color: #d0d0d0;
+  line-height: 1.7;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
 .card {
-  background:#141414;
-  border-radius:10px;
-  padding:12px;
-  text-align:center;
-  border:1px solid #1f1f1f;
-  transition:0.2s;
+  min-width: 250px;
+  background: rgba(17,17,17,0.84);
+  border-radius: 18px;
+  padding: 22px;
+  transition: .25s;
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
 }
 
 .card:hover {
-  transform:translateY(-2px);
+  transform: scale(1.05);
+  background: rgba(28,28,28,0.94);
+  border-color: rgba(244,197,66,0.5);
 }
 
-/* PRECIO */
-.price {
-  color:#46d369;
-  font-weight:bold;
-  margin:6px 0;
+.card h3 {
+  color: #f4c542;
+  margin-top: 0;
 }
 
-/* BOTÓN */
-button {
-  background:#e50914;
-  border:none;
-  padding:8px;
-  border-radius:6px;
-  color:white;
-  cursor:pointer;
-  width:100%;
-  font-size:13px;
+.old {
+  text-decoration: line-through;
+  color: gray;
+  margin-bottom: 6px;
 }
 
-button:hover {
-  background:#ff1e2d;
+.new {
+  font-size: 28px;
+  color: #f4c542;
+  font-weight: bold;
+  margin-top: 0;
 }
 
-/* CARRITO */
-.cart {
-  position:fixed;
-  bottom:15px;
-  right:15px;
-  background:#e50914;
-  padding:12px;
-  border-radius:50%;
-  font-size:18px;
-  cursor:pointer;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
 }
 
+.feature, .testimonial, .faq {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.feature h3, .faq h3 {
+  margin-top: 0;
+  color: #f4c542;
+}
+
+.feature p, .testimonial p, .faq p {
+  color: #d7d7d7;
+  line-height: 1.6;
+}
+
+.cta-box {
+  text-align: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(244,197,66,0.2);
+  border-radius: 22px;
+  padding: 34px 20px;
+}
+
+.footer {
+  margin-top: 70px;
+  padding: 24px;
+  border-top: 1px solid rgba(255,255,255,0.10);
+  color: gray;
+  text-align: center;
+}
+
+.wa {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 28px;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+@media (max-width: 900px) {
+  .grid, .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  h1 { font-size: 38px; }
+  .grid, .stats {
+    grid-template-columns: 1fr;
+  }
+  .section-title {
+    font-size: 28px;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<header>🔥 Digital Premium</header>
-
 <div class="container">
 
-<h3>📺 Servicios</h3>
-<div class="grid">
+  <div class="hero">
+    <div class="badge">PANEL PREMIUM STREAMING</div>
+    <h1>Tu página de <span class="gold">ventas streaming</span> lista para convertir</h1>
+    <p>Netflix, Disney+, HBO Max, Prime Video, Apple TV+, Spotify y más. Combos listos para vender, atención por WhatsApp y una presentación que genera más confianza.</p>
 
-<div class="card">
-Netflix
-<p class="price">$13.000</p>
-<button onclick="add('Netflix')">Agregar</button>
+    <div class="actions">
+      <a class="btn btn-primary" href="https://wa.me/573165011242?text=Hola%20quiero%20informaci%C3%B3n%20sobre%20las%20cuentas%20streaming">Hablar por WhatsApp</a>
+      <a class="btn btn-secondary" href="#combos">Ver combos</a>
+    </div>
+
+    <div class="logos">
+      <div class="logo">Netflix</div>
+      <div class="logo">Disney+</div>
+      <div class="logo">HBO Max</div>
+      <div class="logo">Prime Video</div>
+      <div class="logo">Apple TV+</div>
+      <div class="logo">Spotify</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>10+</strong>Plataformas</div>
+      <div class="stat"><strong>5</strong>Combos listos</div>
+      <div class="stat"><strong>$7k</strong>Desde</div>
+      <div class="stat"><strong>24/7</strong>Atención</div>
+    </div>
+  </div>
+
+  <div class="section" id="combos">
+    <h2 class="section-title"><span class="gold">🔥 Combos destacados</span></h2>
+    <p class="section-sub">Muestra primero los combos para aumentar el valor de cada venta y llevar al cliente directo a WhatsApp.</p>
+
+    <div class="row">
+      <div class="card">
+        <h3>Combo Full</h3>
+        <p>Netflix + Disney + HBO + Prime</p>
+        <p class="old">$38.000</p>
+        <p class="new">$32.000</p>
+        <a class="btn btn-primary" href="https://wa.me/573165011242?text=Hola%20quiero%20el%20Combo%20Full">Comprar</a>
+      </div>
+
+      <div class="card">
+        <h3>Combo Entretenimiento</h3>
+        <p>Netflix + HBO + Prime</p>
+        <p class="old">$30.000</p>
+        <p class="new">$26.000</p>
+        <a class="btn btn-primary" href="https://wa.me/573165011242?text=Hola%20quiero%20el%20Combo%20Entretenimiento">Comprar</a>
+      </div>
+
+      <div class="card">
+        <h3>Combo Básico</h3>
+        <p>Netflix + Disney+</p>
+        <p class="old">$22.000</p>
+        <p class="new">$20.000</p>
+        <a class="btn btn-primary" href="https://wa.me/573165011242?text=Hola%20quiero%20el%20Combo%20B%C3%A1sico">Comprar</a>
+      </div>
+
+      <div class="card">
+        <h3>Combo Familiar</h3>
+        <p>Prime + Disney Premium + Paramount+</p>
+        <p class="old">$30.000</p>
+        <p class="new">$25.000</p>
+        <a class="btn btn-primary" href="https://wa.me/573165011242?text=Hola%20quiero%20el%20Combo%20Familiar">Comprar</a>
+      </div>
+
+      <div class="card">
+        <h3>Música + Video</h3>
+        <p>Spotify + YouTube</p>
+        <p class="old">$19.000</p>
+        <p class="new">$17.000</p>
+        <a class="btn btn-primary" href="https://wa.me/573165011242?text=Hola%20quiero%20el%20Combo%20M%C3%BAsica%20%2B%20Video">Comprar</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">💼 <span class="gold">Modo negocio completo</span></h2>
+    <p class="section-sub">Esta versión está pensada para atraer más clientes, responder dudas rápido y cerrar ventas más fácil.</p>
+
+    <div class="grid">
+      <div class="feature">
+        <h3>⚡ Entrega inmediata</h3>
+        <p>El cliente entra, ve el combo y te escribe directo para cerrar la compra sin pasos de más.</p>
+      </div>
+      <div class="feature">
+        <h3>💸 Precios claros</h3>
+        <p>Valor real y precio final visibles para que el descuento se vea fuerte y convierta más.</p>
+      </div>
+      <div class="feature">
+        <h3>📲 WhatsApp directo</h3>
+        <p>Todos los botones llevan al cliente directo a tu WhatsApp con intención de compra.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">⭐ <span class="gold">Señales de confianza</span></h2>
+    <div class="grid">
+      <div class="testimonial">
+        <p>Ideal para usar en anuncios, Instagram, TikTok o estados de WhatsApp con una imagen más seria y profesional.</p>
+      </div>
+      <div class="testimonial">
+        <p>Los combos ayudan a vender más porque el cliente siente que está ahorrando y toma la decisión más rápido.</p>
+      </div>
+      <div class="testimonial">
+        <p>El botón directo a WhatsApp hace que cada visita tenga más posibilidades de convertirse en mensaje.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">❓ <span class="gold">Preguntas frecuentes</span></h2>
+    <div class="grid">
+      <div class="faq">
+        <h3>¿La entrega es rápida?</h3>
+        <p>Sí, la idea es atender por WhatsApp y activar lo más rápido posible.</p>
+      </div>
+      <div class="faq">
+        <h3>¿Puedo usar esta web en anuncios?</h3>
+        <p>Sí, puedes poner este enlace en tus perfiles, campañas y estados para recibir más mensajes.</p>
+      </div>
+      <div class="faq">
+        <h3>¿Se puede editar?</h3>
+        <p>Sí, puedes cambiar combos, textos, precios, colores y el número de WhatsApp cuando quieras.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="cta-box">
+      <h2 class="section-title">🚀 Activa hoy mismo</h2>
+      <p class="section-sub">Si quieres una web que convierta visitas en mensajes, esta estructura ya está lista para vender.</p>
+      <a class="btn btn-primary" href="https://wa.me/573165011242?text=Hola%20quiero%20informaci%C3%B3n%20sobre%20las%20cuentas%20streaming">Hablar por WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    Panel Premium Streaming © 2026
+  </div>
+
 </div>
 
-<div class="card">
-Spotify
-<p class="price">$9.000</p>
-<button onclick="add('Spotify')">Agregar</button>
-</div>
-
-<div class="card">
-Disney+
-<p class="price">$7.000</p>
-<button onclick="add('Disney+')">Agregar</button>
-</div>
-
-</div>
-
-<h3>📦 Combos</h3>
-<div class="grid">
-
-<div class="card">
-Combo Full
-<p>Netflix + Spotify + Disney</p>
-<p class="price">$35.000</p>
-<button onclick="add('Combo Full')">Agregar</button>
-</div>
-
-<div class="card">
-Combo Básico
-<p>Netflix + Spotify</p>
-<p class="price">$20.000</p>
-<button onclick="add('Combo Básico')">Agregar</button>
-</div>
-
-</div>
-
-</div>
-
-<div class="cart" onclick="pagar()">🛒</div>
-
-<script>
-let carrito=[];
-
-function add(item){
-  carrito.push(item);
-  alert("Agregado: " + item);
-}
-
-function pagar(){
-  if(carrito.length===0){
-    alert("Carrito vacío");
-    return;
-  }
-
-  let msg="Hola 👋 quiero comprar:%0A%0A";
-  carrito.forEach(i=>msg+="✔ "+i+"%0A");
-
-  window.location.href="https://wa.me/573165011242?text="+msg;
-}
-</script>
+<a class="wa" href="https://wa.me/573165011242?text=Hola%20quiero%20informaci%C3%B3n%20sobre%20las%20cuentas%20streaming">💬</a>
 
 </body>
 </html>
