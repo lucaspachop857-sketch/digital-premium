@@ -6,263 +6,258 @@
 <title>Digital Premium</title>
 
 <style>
-body{margin:0;font-family:Arial;background:#f4f6f9}
+body{
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, #0f172a, #020617);
+    color:white;
+}
 
 /* HEADER */
-.top{background:#000;color:#fff;text-align:center;padding:5px;font-size:13px}
-
 header{
-background:#16a34a;
-color:white;
-padding:15px;
-display:flex;
-justify-content:space-between;
-align-items:center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(10px);
 }
 
-.logo{font-weight:bold}
-
-.search{
-padding:8px;
-border:none;
-border-radius:5px;
-width:200px;
+.logo{
+    font-size:22px;
+    font-weight:bold;
+    color:#22c55e;
 }
 
-.cart{
-background:white;
-color:#16a34a;
-padding:6px 10px;
-border-radius:20px;
-cursor:pointer;
+nav a{
+    margin:0 15px;
+    text-decoration:none;
+    color:white;
+    opacity:0.8;
 }
 
-/* CONTENIDO */
-.container{max-width:1200px;margin:auto;padding:20px}
+nav a:hover{
+    opacity:1;
+}
 
+/* GRID */
+.container{
+    padding:40px;
+}
+
+.title{
+    font-size:28px;
+    margin-bottom:20px;
+}
+
+/* CARDS */
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap:25px;
 }
 
-/* CARD */
 .card{
-background:white;
-border-radius:12px;
-padding:15px;
-text-align:center;
-box-shadow:0 3px 10px rgba(0,0,0,0.1);
-transition:0.3s;
+    background:rgba(255,255,255,0.05);
+    border-radius:15px;
+    padding:20px;
+    text-align:center;
+    transition:0.3s;
+    border:1px solid rgba(255,255,255,0.1);
 }
 
-.card:hover{transform:translateY(-5px)}
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 20px #22c55e;
+}
 
 .card img{
-height:70px;
-object-fit:contain;
+    width:80px;
+    margin-bottom:10px;
 }
 
-.price{color:#16a34a;font-weight:bold;font-size:18px}
-
-/* RATING */
-.stars{color:#fbbf24;margin:5px 0}
-
-/* BOTON */
-button{
-background:#16a34a;
-color:white;
-border:none;
-padding:10px;
-border-radius:6px;
-cursor:pointer;
-width:100%;
+.price{
+    color:#22c55e;
+    font-size:20px;
+    margin:10px 0;
 }
 
-button:hover{background:#12813b}
+.btn{
+    background:#22c55e;
+    border:none;
+    padding:10px;
+    width:100%;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#16a34a;
+}
 
 /* COMBOS */
-.combo{border:2px solid #16a34a}
-
-/* NOTIFICACIÓN */
-.toast{
-position:fixed;
-top:20px;
-right:20px;
-background:#16a34a;
-color:white;
-padding:10px 15px;
-border-radius:8px;
-display:none;
+.combos{
+    margin-top:50px;
 }
 
-/* CARRITO */
-.cart-panel{
-position:fixed;
-right:-350px;
-top:0;
-width:300px;
-height:100%;
-background:white;
-box-shadow:-3px 0 10px rgba(0,0,0,0.2);
-padding:15px;
-transition:0.3s;
-overflow:auto;
+.combo{
+    background:rgba(255,255,255,0.05);
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,0.1);
 }
-.cart-panel.active{right:0}
+
+.combo:hover{
+    box-shadow:0 0 20px orange;
+}
 
 /* WHATSAPP */
 .whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:white;
-padding:15px;
-border-radius:50%;
-text-decoration:none;
-font-size:20px;
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25d366;
+    color:white;
+    padding:15px;
+    border-radius:50%;
+    font-size:20px;
+    text-decoration:none;
 }
-
 </style>
 </head>
 
 <body>
 
-<div class="top">🔥 Ofertas en plataformas digitales</div>
-
 <header>
-<div class="logo">Digital Premium</div>
-
-<input class="search" placeholder="Buscar..." onkeyup="search(this.value)">
-
-<div class="cart" onclick="toggleCart()">🛒 (<span id="count">0</span>)</div>
+    <div class="logo">🔥 Digital Premium</div>
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#">Plataformas</a>
+        <a href="#">Combos</a>
+    </nav>
 </header>
 
 <div class="container">
 
-<h2>Streaming</h2>
+    <div class="title">📺 Plataformas</div>
 
-<div class="grid" id="products">
+    <div class="grid">
 
-<!-- PRODUCTOS -->
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg">
+            <h3>Netflix</h3>
+            <div class="price">$13.000</div>
+            <button class="btn">Agregar</button>
+        </div>
 
-<div class="card" data-name="netflix">
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg">
-Netflix
-<div class="stars">★★★★★</div>
-<p class="price">$13.000</p>
-<button onclick="add('Netflix',13000)">Agregar</button>
-</div>
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg">
+            <h3>Disney Standard</h3>
+            <div class="price">$7.000</div>
+            <button class="btn">Agregar</button>
+        </div>
 
-<div class="card" data-name="spotify">
-<img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg">
-Spotify
-<div class="stars">★★★★★</div>
-<p class="price">$9.000</p>
-<button onclick="add('Spotify',9000)">Agregar</button>
-</div>
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg">
+            <h3>Disney Premium</h3>
+            <div class="price">$13.000</div>
+            <button class="btn">Agregar</button>
+        </div>
 
-<div class="card" data-name="disney">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg">
-Disney+
-<div class="stars">★★★★★</div>
-<p class="price">$7.000</p>
-<button onclick="add('Disney+',7000)">Agregar</button>
-</div>
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/HBO_Max_Logo.svg">
+            <h3>HBO Max</h3>
+            <div class="price">$7.000</div>
+            <button class="btn">Agregar</button>
+        </div>
 
-<div class="card" data-name="hbo">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/33/HBO_Max_Logo.svg">
-HBO Max
-<div class="stars">★★★★★</div>
-<p class="price">$7.000</p>
-<button onclick="add('HBO Max',7000)">Agregar</button>
-</div>
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png">
+            <h3>Prime Video</h3>
+            <div class="price">$8.000</div>
+            <button class="btn">Agregar</button>
+        </div>
 
-</div>
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Paramount_Plus.svg">
+            <h3>Paramount+</h3>
+            <div class="price">$7.000</div>
+            <button class="btn">Agregar</button>
+        </div>
 
-<h2>Combos</h2>
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.svg">
+            <h3>Crunchyroll</h3>
+            <div class="price">$7.000</div>
+            <button class="btn">Agregar</button>
+        </div>
 
-<div class="grid">
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg">
+            <h3>Spotify</h3>
+            <div class="price">$9.000</div>
+            <button class="btn">Agregar</button>
+        </div>
 
-<div class="card combo">
-🔥 Combo Básico
-<p>Netflix + Spotify</p>
-<p class="price">$20.000</p>
-<button onclick="add('Combo Básico',20000)">Agregar</button>
-</div>
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg">
+            <h3>YouTube Premium</h3>
+            <div class="price">$10.000</div>
+            <button class="btn">Agregar</button>
+        </div>
 
-<div class="card combo">
-💎 Combo Premium
-<p>Todo incluido</p>
-<p class="price">$50.000</p>
-<button onclick="add('Combo Premium',50000)">Agregar</button>
-</div>
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg">
+            <h3>Apple TV</h3>
+            <div class="price">$8.000</div>
+            <button class="btn">Agregar</button>
+        </div>
 
-</div>
+    </div>
 
-</div>
+    <!-- COMBOS -->
+    <div class="combos">
+        <div class="title">🎁 Combos</div>
 
-<!-- NOTIFICACIÓN -->
-<div class="toast" id="toast">Agregado al carrito</div>
+        <div class="grid">
 
-<!-- CARRITO -->
-<div class="cart-panel" id="cart">
-<h3>🛒 Carrito</h3>
-<div id="items"></div>
-<p>Total: $<span id="total">0</span></p>
-<button onclick="checkout()">Finalizar compra</button>
+            <div class="combo">
+                <h3>🔥 Combo Básico</h3>
+                <p>Netflix + Spotify</p>
+                <div class="price">$20.000</div>
+                <button class="btn">Agregar</button>
+            </div>
+
+            <div class="combo">
+                <h3>🔥 Combo Full</h3>
+                <p>Netflix + Disney + Spotify</p>
+                <div class="price">$35.000</div>
+                <button class="btn">Agregar</button>
+            </div>
+
+            <div class="combo">
+                <h3>📺 Combo Streaming</h3>
+                <p>Netflix + HBO + Prime + Disney</p>
+                <div class="price">$30.000</div>
+                <button class="btn">Agregar</button>
+            </div>
+
+            <div class="combo">
+                <h3>💎 Combo Premium</h3>
+                <p>Todo incluido</p>
+                <div class="price">$50.000</div>
+                <button class="btn">Agregar</button>
+            </div>
+
+        </div>
+    </div>
+
 </div>
 
 <!-- WHATSAPP -->
-<a class="whatsapp" href="https://wa.me/573165011242">💬</a>
-
-<script>
-let cart=[];
-
-function toggleCart(){
-document.getElementById("cart").classList.toggle("active");
-}
-
-function add(name,price){
-cart.push({name,price});
-render();
-toast();
-}
-
-function render(){
-let html="";
-let total=0;
-
-cart.forEach(i=>{
-total+=i.price;
-html+=<p>${i.name} - $${i.price}</p>;
-});
-
-document.getElementById("items").innerHTML=html;
-document.getElementById("total").innerText=total;
-document.getElementById("count").innerText=cart.length;
-}
-
-function checkout(){
-let msg="Hola quiero comprar:%0A";
-cart.forEach(i=>msg+=i.name+" $"+i.price+"%0A");
-window.location.href="https://wa.me/573165011242?text="+msg;
-}
-
-function toast(){
-let t=document.getElementById("toast");
-t.style.display="block";
-setTimeout(()=>t.style.display="none",1500);
-}
-
-function search(value){
-value=value.toLowerCase();
-document.querySelectorAll(".card").forEach(card=>{
-card.style.display = card.dataset.name?.includes(value) ? "block" : "none";
-});
-}
-</script>
+<a class="whatsapp" href="https://wa.me/573165011242" target="_blank">💬</a>
 
 </body>
 </html>
