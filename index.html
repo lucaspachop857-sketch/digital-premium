@@ -6,22 +6,11 @@
 <title>Digital Premium</title>
 
 <style>
-body{
-margin:0;
-font-family:Arial;
-background:#f6f7f9;
-}
-
-/* TOP BAR */
-.topbar{
-background:#000;
-color:white;
-text-align:center;
-padding:5px;
-font-size:13px;
-}
+body{margin:0;font-family:Arial;background:#f4f6f9}
 
 /* HEADER */
+.top{background:#000;color:#fff;text-align:center;padding:5px;font-size:13px}
+
 header{
 background:#16a34a;
 color:white;
@@ -31,30 +20,26 @@ justify-content:space-between;
 align-items:center;
 }
 
-.logo{font-weight:bold;font-size:18px}
+.logo{font-weight:bold}
 
-.nav{
-display:flex;
-gap:15px;
-font-size:14px;
+.search{
+padding:8px;
+border:none;
+border-radius:5px;
+width:200px;
 }
 
 .cart{
-cursor:pointer;
 background:white;
 color:#16a34a;
 padding:6px 10px;
 border-radius:20px;
+cursor:pointer;
 }
 
-/* CONTENEDOR */
-.container{
-max-width:1200px;
-margin:auto;
-padding:20px;
-}
+/* CONTENIDO */
+.container{max-width:1200px;margin:auto;padding:20px}
 
-/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -71,22 +56,19 @@ box-shadow:0 3px 10px rgba(0,0,0,0.1);
 transition:0.3s;
 }
 
-.card:hover{
-transform:translateY(-5px);
-}
+.card:hover{transform:translateY(-5px)}
 
 .card img{
 height:70px;
 object-fit:contain;
-margin-bottom:10px;
 }
 
-.price{
-color:#16a34a;
-font-weight:bold;
-font-size:18px;
-}
+.price{color:#16a34a;font-weight:bold;font-size:18px}
 
+/* RATING */
+.stars{color:#fbbf24;margin:5px 0}
+
+/* BOTON */
 button{
 background:#16a34a;
 color:white;
@@ -97,16 +79,24 @@ cursor:pointer;
 width:100%;
 }
 
-button:hover{
-background:#12813b;
-}
+button:hover{background:#12813b}
 
 /* COMBOS */
-.combo{
-border:2px solid #16a34a;
+.combo{border:2px solid #16a34a}
+
+/* NOTIFICACIÓN */
+.toast{
+position:fixed;
+top:20px;
+right:20px;
+background:#16a34a;
+color:white;
+padding:10px 15px;
+border-radius:8px;
+display:none;
 }
 
-/* CARRITO LATERAL */
+/* CARRITO */
 .cart-panel{
 position:fixed;
 right:-350px;
@@ -119,10 +109,7 @@ padding:15px;
 transition:0.3s;
 overflow:auto;
 }
-
-.cart-panel.active{
-right:0;
-}
+.cart-panel.active{right:0}
 
 /* WHATSAPP */
 .whatsapp{
@@ -133,12 +120,8 @@ background:#25D366;
 color:white;
 padding:15px;
 border-radius:50%;
-font-size:20px;
 text-decoration:none;
-}
-
-h2{
-margin-top:30px;
+font-size:20px;
 }
 
 </style>
@@ -146,17 +129,12 @@ margin-top:30px;
 
 <body>
 
-<div class="topbar">Productos digitales en oferta 🔥 ¡Compra ahora!</div>
+<div class="top">🔥 Ofertas en plataformas digitales</div>
 
 <header>
 <div class="logo">Digital Premium</div>
 
-<div class="nav">
-<span>Inicio</span>
-<span>Productos</span>
-<span>Cómo comprar</span>
-<span>Contacto</span>
-</div>
+<input class="search" placeholder="Buscar..." onkeyup="search(this.value)">
 
 <div class="cart" onclick="toggleCart()">🛒 (<span id="count">0</span>)</div>
 </header>
@@ -165,78 +143,40 @@ margin-top:30px;
 
 <h2>Streaming</h2>
 
-<div class="grid">
+<div class="grid" id="products">
 
 <!-- PRODUCTOS -->
 
-<div class="card">
+<div class="card" data-name="netflix">
 <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg">
 Netflix
+<div class="stars">★★★★★</div>
 <p class="price">$13.000</p>
 <button onclick="add('Netflix',13000)">Agregar</button>
 </div>
 
-<div class="card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg">
-Disney Standard
-<p class="price">$7.000</p>
-<button onclick="add('Disney Standard',7000)">Agregar</button>
-</div>
-
-<div class="card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg">
-Disney Premium
-<p class="price">$13.000</p>
-<button onclick="add('Disney Premium',13000)">Agregar</button>
-</div>
-
-<div class="card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/33/HBO_Max_Logo.svg">
-HBO Max
-<p class="price">$7.000</p>
-<button onclick="add('HBO Max',7000)">Agregar</button>
-</div>
-
-<div class="card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png">
-Prime Video
-<p class="price">$8.000</p>
-<button onclick="add('Prime Video',8000)">Agregar</button>
-</div>
-
-<div class="card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Paramount%2B_logo.svg">
-Paramount+
-<p class="price">$7.000</p>
-<button onclick="add('Paramount+',7000)">Agregar</button>
-</div>
-
-<div class="card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Crunchyroll_Logo.png">
-Crunchyroll
-<p class="price">$7.000</p>
-<button onclick="add('Crunchyroll',7000)">Agregar</button>
-</div>
-
-<div class="card">
+<div class="card" data-name="spotify">
 <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg">
 Spotify
+<div class="stars">★★★★★</div>
 <p class="price">$9.000</p>
 <button onclick="add('Spotify',9000)">Agregar</button>
 </div>
 
-<div class="card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Premium_logo.svg">
-YouTube Premium
-<p class="price">$10.000</p>
-<button onclick="add('YouTube Premium',10000)">Agregar</button>
+<div class="card" data-name="disney">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg">
+Disney+
+<div class="stars">★★★★★</div>
+<p class="price">$7.000</p>
+<button onclick="add('Disney+',7000)">Agregar</button>
 </div>
 
-<div class="card">
-<img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg">
-Apple TV
-<p class="price">$8.000</p>
-<button onclick="add('Apple TV',8000)">Agregar</button>
+<div class="card" data-name="hbo">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/33/HBO_Max_Logo.svg">
+HBO Max
+<div class="stars">★★★★★</div>
+<p class="price">$7.000</p>
+<button onclick="add('HBO Max',7000)">Agregar</button>
 </div>
 
 </div>
@@ -246,28 +186,14 @@ Apple TV
 <div class="grid">
 
 <div class="card combo">
-🔥 Combo Básico  
+🔥 Combo Básico
 <p>Netflix + Spotify</p>
 <p class="price">$20.000</p>
 <button onclick="add('Combo Básico',20000)">Agregar</button>
 </div>
 
 <div class="card combo">
-🔥 Combo Full  
-<p>Netflix + Disney + Spotify</p>
-<p class="price">$35.000</p>
-<button onclick="add('Combo Full',35000)">Agregar</button>
-</div>
-
-<div class="card combo">
-Combo Streaming  
-<p>Netflix + HBO + Prime + Disney</p>
-<p class="price">$30.000</p>
-<button onclick="add('Combo Streaming',30000)">Agregar</button>
-</div>
-
-<div class="card combo">
-💎 Combo Premium  
+💎 Combo Premium
 <p>Todo incluido</p>
 <p class="price">$50.000</p>
 <button onclick="add('Combo Premium',50000)">Agregar</button>
@@ -276,6 +202,9 @@ Combo Streaming
 </div>
 
 </div>
+
+<!-- NOTIFICACIÓN -->
+<div class="toast" id="toast">Agregado al carrito</div>
 
 <!-- CARRITO -->
 <div class="cart-panel" id="cart">
@@ -298,6 +227,7 @@ document.getElementById("cart").classList.toggle("active");
 function add(name,price){
 cart.push({name,price});
 render();
+toast();
 }
 
 function render(){
@@ -318,6 +248,19 @@ function checkout(){
 let msg="Hola quiero comprar:%0A";
 cart.forEach(i=>msg+=i.name+" $"+i.price+"%0A");
 window.location.href="https://wa.me/573165011242?text="+msg;
+}
+
+function toast(){
+let t=document.getElementById("toast");
+t.style.display="block";
+setTimeout(()=>t.style.display="none",1500);
+}
+
+function search(value){
+value=value.toLowerCase();
+document.querySelectorAll(".card").forEach(card=>{
+card.style.display = card.dataset.name?.includes(value) ? "block" : "none";
+});
 }
 </script>
 
