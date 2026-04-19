@@ -6,39 +6,20 @@
 <title>Digital Premium</title>
 
 <style>
-body{
-margin:0;
-font-family:Arial;
-background:#f4f6f9;
-}
+body{margin:0;font-family:Arial;background:#f5f5f5}
 
 /* HEADER */
 header{
 background:#0f9d58;
 color:white;
-padding:15px 20px;
+padding:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-font-size:18px;
-}
-
-/* BOTON CARRITO */
-.cart-btn{
-background:white;
-color:#0f9d58;
-padding:6px 12px;
-border-radius:20px;
-cursor:pointer;
-font-weight:bold;
 }
 
 /* CONTENEDOR */
-.container{
-max-width:1200px;
-margin:auto;
-padding:20px;
-}
+.container{max-width:1200px;margin:auto;padding:20px}
 
 /* GRID */
 .grid{
@@ -53,18 +34,14 @@ background:white;
 border-radius:12px;
 padding:15px;
 text-align:center;
-box-shadow:0 4px 12px rgba(0,0,0,0.08);
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
 transition:0.3s;
 }
 
-.card:hover{
-transform:translateY(-5px);
-}
+.card:hover{transform:translateY(-5px)}
 
-/* IMAGEN */
 .card img{
-width:100%;
-height:90px;
+height:60px;
 object-fit:contain;
 margin-bottom:10px;
 }
@@ -76,7 +53,7 @@ font-weight:bold;
 font-size:18px;
 }
 
-/* BOTON */
+/* BOTÓN */
 button{
 background:#0f9d58;
 color:white;
@@ -85,11 +62,6 @@ padding:10px;
 border-radius:6px;
 cursor:pointer;
 width:100%;
-font-weight:bold;
-}
-
-button:hover{
-background:#0c7d46;
 }
 
 /* COMBOS */
@@ -105,30 +77,12 @@ top:0;
 width:300px;
 height:100%;
 background:white;
-box-shadow:-3px 0 15px rgba(0,0,0,0.2);
+box-shadow:-3px 0 10px rgba(0,0,0,0.2);
 padding:15px;
 transition:0.3s;
-overflow:auto;
 }
 .cart.active{right:0}
 
-.item{
-display:flex;
-justify-content:space-between;
-margin-bottom:10px;
-font-size:14px;
-}
-
-.total{
-font-weight:bold;
-margin-top:10px;
-}
-
-/* TITULOS */
-h2{
-margin-top:30px;
-color:#333;
-}
 </style>
 </head>
 
@@ -136,89 +90,80 @@ color:#333;
 
 <header>
 🔥 Digital Premium
-<div class="cart-btn" onclick="toggleCart()">🛒 (<span id="count">0</span>)</div>
+<div onclick="toggleCart()" style="cursor:pointer">🛒 (<span id="count">0</span>)</div>
 </header>
 
 <div class="container">
 
-<h2>📺 Plataformas</h2>
+<h2>Plataformas</h2>
 
 <div class="grid">
 
-<!-- NETFLIX -->
 <div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/732/732228.png">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg">
 Netflix
 <p class="price">$13.000</p>
 <button onclick="add('Netflix',13000)">Agregar</button>
 </div>
 
-<!-- DISNEY -->
 <div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968758.png">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg">
 Disney Standard
 <p class="price">$7.000</p>
 <button onclick="add('Disney Standard',7000)">Agregar</button>
 </div>
 
 <div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968758.png">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg">
 Disney Premium
 <p class="price">$13.000</p>
 <button onclick="add('Disney Premium',13000)">Agregar</button>
 </div>
 
-<!-- HBO -->
 <div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/732/732212.png">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/33/HBO_Max_Logo.svg">
 HBO Max
 <p class="price">$7.000</p>
 <button onclick="add('HBO Max',7000)">Agregar</button>
 </div>
 
-<!-- PRIME -->
 <div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png">
 Prime Video
 <p class="price">$8.000</p>
 <button onclick="add('Prime Video',8000)">Agregar</button>
 </div>
 
-<!-- PARAMOUNT -->
 <div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968841.png">
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Paramount%2B_logo.svg">
 Paramount+
 <p class="price">$7.000</p>
 <button onclick="add('Paramount+',7000)">Agregar</button>
 </div>
 
-<!-- CRUNCHYROLL -->
 <div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/5968/5968701.png">
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Crunchyroll_Logo.png">
 Crunchyroll
 <p class="price">$7.000</p>
 <button onclick="add('Crunchyroll',7000)">Agregar</button>
 </div>
 
-<!-- SPOTIFY -->
 <div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/174/174872.png">
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg">
 Spotify
 <p class="price">$9.000</p>
 <button onclick="add('Spotify',9000)">Agregar</button>
 </div>
 
-<!-- YOUTUBE -->
 <div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Premium_logo.svg">
 YouTube Premium
 <p class="price">$10.000</p>
 <button onclick="add('YouTube Premium',10000)">Agregar</button>
 </div>
 
-<!-- APPLE -->
 <div class="card">
-<img src="https://cdn-icons-png.flaticon.com/512/0/747.png">
+<img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg">
 Apple TV
 <p class="price">$8.000</p>
 <button onclick="add('Apple TV',8000)">Agregar</button>
@@ -226,7 +171,7 @@ Apple TV
 
 </div>
 
-<h2>📦 Combos</h2>
+<h2>Combos</h2>
 
 <div class="grid">
 
@@ -262,13 +207,11 @@ Combo Streaming
 
 </div>
 
-<!-- CARRITO -->
 <div class="cart" id="cart">
-<h3>🛒 Carrito</h3>
+<h3>Carrito</h3>
 <div id="items"></div>
-<div class="total">Total: $<span id="total">0</span></div>
-<br>
-<button onclick="checkout()">Finalizar compra</button>
+<p>Total: $<span id="total">0</span></p>
+<button onclick="checkout()">Comprar</button>
 </div>
 
 <script>
@@ -284,27 +227,22 @@ render();
 }
 
 function render(){
-let items=document.getElementById("items");
-items.innerHTML="";
+let html="";
 let total=0;
 
 cart.forEach(i=>{
 total+=i.price;
-items.innerHTML+=`
-<div class="item">
-${i.name}
-<span>$${i.price}</span>
-</div>`;
+html+=<p>${i.name} - $${i.price}</p>;
 });
 
+document.getElementById("items").innerHTML=html;
 document.getElementById("total").innerText=total;
 document.getElementById("count").innerText=cart.length;
 }
 
 function checkout(){
-let msg="Hola 👋 quiero comprar:%0A%0A";
-cart.forEach(i=>msg+=i.name+" - $"+i.price+"%0A");
-
+let msg="Hola quiero comprar:%0A";
+cart.forEach(i=>msg+=i.name+" $"+i.price+"%0A");
 window.location.href="https://wa.me/573165011242?text="+msg;
 }
 </script>
